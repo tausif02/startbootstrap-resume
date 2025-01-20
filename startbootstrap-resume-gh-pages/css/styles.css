@@ -307,6 +307,7 @@ figure {
 
 img,
 svg {
+  border-radius: 50%; /* Circular image */
   vertical-align: middle;
 }
 
