@@ -304,6 +304,7 @@ kbd kbd {
 figure {
   margin: 0 0 1rem;
 }
+<<<<<<< HEAD
 img.rounded-circle {
     border-radius: 30%; /* Adjust roundness */
     width: 180px; /* Resize image */
@@ -313,6 +314,11 @@ img.rounded-circle {
 }
 
 img,
+=======
+
+img,
+svg {
+>>>>>>> e70c7a6 (Add Bootstrap Resume Theme files)
   vertical-align: middle;
 }
 
@@ -10975,4 +10981,8 @@ section.resume-section .resume-section-content {
     padding-top: 5rem;
     padding-bottom: 5rem;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> e70c7a6 (Add Bootstrap Resume Theme files)
