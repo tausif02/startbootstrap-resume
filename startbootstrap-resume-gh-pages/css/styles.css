@@ -304,6 +304,13 @@ kbd kbd {
 figure {
   margin: 0 0 1rem;
 }
+img.rounded-circle {
+    border-radius: 30%; /* Adjust roundness */
+    width: 180px; /* Resize image */
+    height: 180px;
+    border: 4px solid #ff5733; /* Add border */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+}
 
 img,
   vertical-align: middle;
