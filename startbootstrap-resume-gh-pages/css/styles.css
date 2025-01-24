@@ -304,6 +304,21 @@ kbd kbd {
 figure {
   margin: 0 0 1rem;
 }
+img {
+    transition: transform 0.3s ease-in-out;
+}
+
+img:hover {
+    transform: scale(1.05); /* Slightly enlarges the image */
+}
+
+img.rounded-circle {
+    border-radius: 30%; /* Adjust roundness */
+    width: 180px; /* Resize image */
+    height: 180px;
+    border: 4px solid #ff5733; /* Add border */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); /* Add shadow */
+}
 
 img,
 svg {
@@ -11007,3 +11022,38 @@ section.resume-section .resume-section-content {
   }
 
 }
+.resume-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.resume-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+a {
+    position: relative;
+    text-decoration: none;
+    color: #003366; /* Keep default link color */
+    transition: color 0.3s ease-in-out;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #ffcc00; /* Yellow underline */
+    transition: width 0.3s ease-in-out;
+}
+
+a:hover {
+    color: #ffcc00; /* Change text color on hover */
+}
+
+a:hover::after {
+    width: 100%; /* Expand underline from left to right */
+}
+
