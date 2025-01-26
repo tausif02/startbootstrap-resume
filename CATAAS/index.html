@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Cat Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Centers everything vertically */
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        img {
+            max-width: 90%;
+            max-height: 400px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none; /* Initially hidden until image loads */
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>Random Cat</h2>
+    <img id="catImage" src="" alt="Random Cat Image">
+    <p id="errorMessage" class="error" style="display: none;">Failed to load cat image. Please try again.</p>
+    <br>
+    <button id="getCatButton">Get New Cat</button>
+
+    <script>
+        function fetchCatImage() {
+            const catImage = document.getElementById("catImage");
+            const errorMessage = document.getElementById("errorMessage");
+
+            fetch("https://cataas.com/cat?json=true")
+                .then(response => response.json())
+                .then(data => {
+                    console.log("API Response:", data);
+                    if (data && data._id) {
+                        catImage.src = `https://cataas.com/cat/${data._id}?t=${new Date().getTime()}`;
+                        catImage.style.display = "block"; // Show image once loaded
+                        errorMessage.style.display = "none"; // Hide error message
+                    } else {
+                        throw new Error("Invalid API response");
+                    }
+                })
+                .catch(error => {
+                    console.error("API Error:", error);
+                    errorMessage.style.display = "block";
+                    catImage.style.display = "none"; // Hide image on error
+                });
+        }
+
+        document.getElementById("getCatButton").addEventListener("click", fetchCatImage);
+
+        // Load first cat on page load
+        fetchCatImage();
+    </script>
+</body>
+</html>
